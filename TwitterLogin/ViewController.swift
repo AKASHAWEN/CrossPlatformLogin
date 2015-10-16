@@ -7,19 +7,30 @@
 //
 
 import UIKit
+import Parse
+import ParseTwitterUtils
 
-class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+class ViewController: UIViewController, PFLogInViewControllerDelegate {
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // test for the twitter login
+        
+        
+        
+        
+        
+        //
+        if (PFUser.currentUser() == nil) {
+            let loginViewController = PFLogInViewController()
+            loginViewController.delegate = self
+            loginViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton, .PasswordForgotten, .DismissButton, .Twitter]
+            
+            loginViewController.emailAsUsername = true
+            self.presentViewController(loginViewController, animated: false, completion: nil)
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 

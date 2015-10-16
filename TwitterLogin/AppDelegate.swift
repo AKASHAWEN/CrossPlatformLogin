@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Parse
+import Bolts
+import ParseTwitterUtils
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("sEM9B1Qgr6S7opZCjzFcHTxByJ8pYtAfwriPkgQs",
+            clientKey: "CTmFGQxBala8HIMWvjQlZemx9likEfo8v3I7jotE")
+        
+        PFTwitterUtils.initializeWithConsumerKey("V25UECGRzfJW22o4dhKgGZDU2", consumerSecret: "i2CflgzvC2pEmk2jBK7QuVjn1cuvQphfBCIPwvzb2Yzqhuafil")
+        
+        // [Optional] Track statistics around application opens.
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
         return true
     }
 
